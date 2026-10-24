@@ -1,0 +1,50 @@
+name: Sync composants
+
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+  repository_dispatch:
+    types: [docs-updated]
+
+concurrency:
+  group: sync-composants
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    name: Recopier les docs/ des repos
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone docs/ of each listed repo
+        env:
+          # PAT fine-grained « Contents: read » sur les repos listés (nécessaire pour les privés).
+          # Sans ce secret, seul l'accès aux repos publics fonctionne.
+          TOKEN: ${{ secrets.DOCS_SYNC_TOKEN || github.token }}
+        run: |
+          mkdir -p _sources
+          for repo in $(sed -e 's/#.*//' composants.txt); do
+            git clone --quiet --depth 1 --filter=blob:none --sparse \
+              "https://x-access-token:${TOKEN}@github.com/jabfy-corp/${repo}.git" "_sources/${repo}"
+            git -C "_sources/${repo}" sparse-checkout set docs
+          done
+
+      - name: Copy into composants/
+        run: python3 scripts/sync_composants.py --sources _sources
+
+      - name: Commit changes
+        run: |
+          git add -A composants SUMMARY.md
+          if git diff --cached --quiet; then
+            echo "Aucun changement."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "docs: sync composants"
+          git push

@@ -1,0 +1,5 @@
+# Clones temporaires de la synchro des composants
+_sources/
+__pycache__/
+.DS_Store
+Thumbs.db

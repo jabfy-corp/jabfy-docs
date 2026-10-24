@@ -1,0 +1,19 @@
+# Repos dont le docs/ est recopié dans composants/<repo>/ (un par ligne).
+#
+# Tout ce qui est listé ici devient lisible sur le site GitBook.
+# N'ajouter un repo privé qu'après avoir trié sa doc : voir protection/README.md.
+# Dans chaque repo, les fichiers et dossiers dont le nom commence par « _ » ou « . »
+# ne sont jamais recopiés (ex. docs/_interne/).
+
+jabfy-core
+jabfy-guard
+jabfy-tts
+jabfy-voice
+jabfy-desktop
+jabfy-web
+jabfy-mobile
+
+# Repos privés : à décommenter une fois leur docs/ trié.
+# jabfy-bus
+# jabfy-simulation
+# jabfy-deploy
