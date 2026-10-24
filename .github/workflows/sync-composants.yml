@@ -34,12 +34,12 @@ jobs:
             git -C "_sources/${repo}" sparse-checkout set docs
           done
 
-      - name: Copy into composants/
+      - name: Copy into documentation/composants/
         run: python3 scripts/sync_composants.py --sources _sources
 
       - name: Commit changes
         run: |
-          git add -A composants SUMMARY.md
+          git add -A documentation/composants documentation/SUMMARY.md
           if git diff --cached --quiet; then
             echo "Aucun changement."
             exit 0

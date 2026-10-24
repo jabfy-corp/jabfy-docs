@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Recopie le docs/ de chaque repo listé dans composants.txt vers composants/<repo>/.
+"""Recopie le docs/ de chaque repo listé dans composants.txt vers documentation/composants/<repo>/.
 
 Usage : python3 scripts/sync_composants.py --sources <dossier des clones>
 
@@ -8,7 +8,7 @@ Usage : python3 scripts/sync_composants.py --sources <dossier des clones>
 - ajoute en tête de chaque page un bandeau « à modifier dans le repo d'origine » ;
 - réécrit vers GitHub les liens qui sortent de docs/ (../schemas/x.json…) ;
 - génère un README.md pour chaque dossier qui n'en a pas ;
-- régénère la section « ## Composants » de SUMMARY.md.
+- régénère la section « ## Composants » de documentation/SUMMARY.md.
 
 Stdlib uniquement : lançable tel quel en local comme en CI.
 """
@@ -22,6 +22,8 @@ from pathlib import Path
 
 ORG = "jabfy-corp"
 BRANCH = "main"
+# Dossier synchronisé avec l'espace GitBook (voir gitbook-docs.yaml).
+SITE_DIR = "documentation"
 SECTION = "## Composants"
 LINK = re.compile(r"(\]\()([^)\s]+)((?:\s+\"[^\"]*\")?\))")
 SCHEME = re.compile(r"^[a-z][a-z0-9+.-]*:", re.IGNORECASE)
@@ -159,11 +161,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--sources", required=True, type=Path, help="dossier contenant un clone par repo")
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parent.parent,
-                        help="racine de jabfy-docs (par défaut : parent de scripts/)")
+                        help="racine du repo jabfy-docs (par défaut : parent de scripts/)")
     args = parser.parse_args()
 
     root = args.root.resolve()
-    composants = root / "composants"
+    site = root / SITE_DIR
+    composants = site / "composants"
     repos = read_repos(root / "composants.txt")
 
     # Vérifier toutes les sources avant d'effacer quoi que ce soit :
@@ -188,7 +191,7 @@ def main():
             continue
         ensure_readmes(repo, dest)
         entries.append(f"* [{repo}](composants/{repo}/README.md)")
-        entries += summary_lines(dest, 1, root)
+        entries += summary_lines(dest, 1, site)
         synced.add(repo)
         print(f"{repo} : synchronisé")
 
@@ -197,7 +200,7 @@ def main():
             shutil.rmtree(stale)
             print(f"{stale.name} : retiré (plus listé ou plus de docs/)")
 
-    update_summary(root / "SUMMARY.md", entries)
+    update_summary(site / "SUMMARY.md", entries)
 
 
 if __name__ == "__main__":

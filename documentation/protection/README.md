@@ -18,7 +18,7 @@
 
 ## Ce qui est publié
 
-Le site de doc est lisible par toute personne qui y a accès. Avant d'ajouter un repo privé à [`composants.txt`](../composants.txt) :
+Le site de doc est lisible par toute personne qui y a accès. Avant d'ajouter un repo privé à [`composants.txt`](https://github.com/jabfy-corp/jabfy-docs/blob/main/composants.txt) :
 
 1. relire son `docs/` ;
 2. déplacer dans `docs/_interne/` ce qui ne doit pas sortir (failles connues, configuration, détails d'implémentation sensibles) ;
