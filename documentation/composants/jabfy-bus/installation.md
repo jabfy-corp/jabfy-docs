@@ -75,7 +75,7 @@ docker build -t jabfy-bus .
 docker run --rm -p 8080:8080 jabfy-bus
 ```
 
-Le workflow `publish-image.yml` publie l'image sur `ghcr.io/jabfy-corp/jabfy-bus` à chaque push sur `main` et à chaque release. L'image est bien publiée, mais le workflow échoue ensuite à l'étape d'attestation, indisponible sur le plan GitHub gratuit : voir les [TODO](README.md).
+Le workflow `publish-image.yml` publie l'image sur `ghcr.io/jabfy-corp/jabfy-bus` à chaque push sur `main` et à chaque release, puis prévient jabfy-deploy du nouveau digest si le secret `JABFY_DEPLOY_DISPATCH_TOKEN` est configuré. L'attestation de l'image n'est faite que si le repo est public : pour un repo privé, elle demande un plan GitHub Enterprise.
 
 ## Dans la V0.0.1
 

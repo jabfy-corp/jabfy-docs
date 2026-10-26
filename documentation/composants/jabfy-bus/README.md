@@ -63,7 +63,6 @@ Au 26/10/2026 :
 
 ## Limites connues et TODO
 
-- [ ] Le workflow `publish-image.yml` échoue après avoir publié l'image : l'étape d'attestation n'est pas disponible sur le plan GitHub gratuit de l'organisation. Le digest n'est donc pas reporté et jabfy-deploy n'est pas prévenu.
 - [ ] `jabfy-bus serve` lit la configuration, mais ne démarre ni les adapters ni les policies qu'elle contient, et n'enregistre aucun transport. L'API servie reste vide tant que rien ne publie sur le bus.
 - [ ] La CI n'installe pas FastAPI : les 5 tests d'API (CORS, origines WebSocket) y sont sautés.
 - [ ] `jabfy-bus validate` sur un fichier introuvable affiche une trace Python au lieu d'un message d'erreur.
