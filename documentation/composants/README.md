@@ -1,8 +1,15 @@
 # Composants
 
-Cette section est **générée automatiquement**. Chaque sous-dossier `composants/<repo>/` est une copie du dossier `docs/` du repo correspondant.
+Un dossier `composants/<repo>/` par repo, rempli de l'une de ces deux façons :
 
-> Ne modifiez rien ici, ni dans GitBook ni dans ce repo : la synchronisation suivante écraserait la modification. Corrigez la page dans son repo d'origine ; chaque page copiée commence par un lien vers sa source.
+| Façon | Quand | Où modifier |
+|---|---|---|
+| **Recopié** depuis le `docs/` du repo (recommandé) | Le repo a un `docs/` sur `main` et figure dans [`composants.txt`](https://github.com/jabfy-corp/jabfy-docs/blob/main/composants.txt) | Dans le repo d'origine. Chaque page commence par un lien vers sa source. |
+| **Écrit à la main** dans jabfy-docs | Le repo n'a pas encore de `docs/` | Directement dans `documentation/composants/<repo>/`, par PR sur jabfy-docs |
+
+> Ne modifiez jamais une page recopiée, ni dans GitBook ni dans jabfy-docs : la synchronisation suivante écraserait la modification. Un dossier recopié contient un fichier `.synchro`.
+
+Un dossier écrit à la main n'est jamais touché par la synchronisation. Quand le repo aura son propre `docs/`, déplacez-y les pages, supprimez le dossier écrit à la main, et la synchronisation prendra le relais.
 
 ## Fonctionnement
 
@@ -18,6 +25,8 @@ Le workflow tourne aussi chaque nuit et peut être lancé à la main (« Run wor
 - Seuls les repos listés dans [`composants.txt`](https://github.com/jabfy-corp/jabfy-docs/blob/main/composants.txt) sont recopiés.
 - Les fichiers et dossiers dont le nom commence par `_` ou `.` ne sont jamais recopiés : `docs/_interne/` sert à la doc qui doit rester privée.
 - Les liens qui sortent de `docs/` (`../schemas/…`, `../README.md`) sont réécrits vers GitHub.
+- Les pages suivent l'ordre dans lequel le `README.md` du composant les cite, puis l'ordre alphabétique.
+- Si un repo ne peut pas être cloné (repo privé sans `DOCS_SYNC_TOKEN`), sa doc déjà publiée est conservée et les autres repos sont synchronisés normalement.
 
 Un repo privé n'est ajouté qu'après le tri de sa doc : une fois agrégée, elle devient lisible sur le site.
 

@@ -10,6 +10,11 @@ Usage : python3 scripts/sync_composants.py --sources <dossier des clones>
 - génère un README.md pour chaque dossier qui n'en a pas ;
 - régénère la section « ## Composants » de documentation/SUMMARY.md.
 
+Un dossier généré contient un fichier témoin (.synchro). Un dossier sans témoin a
+été écrit à la main dans jabfy-docs : il n'est jamais modifié ni supprimé, et
+apparaît quand même dans le sommaire. Un repo dont le clone a échoué garde sa
+doc déjà publiée.
+
 Stdlib uniquement : lançable tel quel en local comme en CI.
 """
 
@@ -25,6 +30,8 @@ BRANCH = "main"
 # Dossier synchronisé avec l'espace GitBook (voir gitbook-docs.yaml).
 SITE_DIR = "documentation"
 SECTION = "## Composants"
+MARKER = ".synchro"
+GENERATED_NOTE = "Index généré automatiquement"
 LINK = re.compile(r"(\]\()([^)\s]+)((?:\s+\"[^\"]*\")?\))")
 SCHEME = re.compile(r"^[a-z][a-z0-9+.-]*:", re.IGNORECASE)
 FENCE = re.compile(r"^\s*(```|~~~)")
@@ -106,6 +113,28 @@ def link_text(title):
     return title.replace("[", "\\[").replace("]", "\\]")
 
 
+def is_generated(folder):
+    return (folder / MARKER).is_file()
+
+
+def subfolders(folder):
+    return sorted(p for p in folder.iterdir() if p.is_dir() and is_published((p.name,)))
+
+
+def ordered_pages(folder):
+    """Pages du dossier dans l'ordre où son README les cite, puis les autres par nom."""
+    pages = {p.name: p for p in folder.glob("*.md") if p.name != "README.md"}
+    order = []
+    readme = folder / "README.md"
+    if readme.is_file():
+        for match in LINK.finditer(readme.read_text(encoding="utf-8")):
+            name = match.group(2).partition("#")[0]
+            if name in pages and name not in order:
+                order.append(name)
+    order += sorted(set(pages) - set(order))
+    return [pages[name] for name in order]
+
+
 def copy_docs(repo, src, dest):
     for path in sorted(src.rglob("*")):
         rel = path.relative_to(src)
@@ -119,27 +148,32 @@ def copy_docs(repo, src, dest):
             out.write_text(text, encoding="utf-8")
         else:
             shutil.copy2(path, out)
+    (dest / MARKER).write_text(
+        f"Dossier généré par scripts/sync_composants.py depuis {repo}/docs/ : ne pas modifier ici.\n",
+        encoding="utf-8",
+    )
 
 
-def ensure_readmes(repo, dest):
-    for folder in [dest, *sorted(p for p in dest.rglob("*") if p.is_dir())]:
+def ensure_readmes(top):
+    """Crée l'index des dossiers sans README.md et tient à jour les index déjà générés."""
+    folders = [top] + [p for p in sorted(top.rglob("*"))
+                       if p.is_dir() and is_published(p.relative_to(top).parts)]
+    for folder in folders:
         readme = folder / "README.md"
-        if readme.exists():
+        if readme.exists() and GENERATED_NOTE not in readme.read_text(encoding="utf-8"):
             continue
-        name = repo if folder == dest else folder.name
-        lines = [f"# {name}", "", f"> Index généré automatiquement depuis le docs/ de {repo}.", ""]
-        lines += [f"* [{link_text(page_title(p))}]({p.name})" for p in sorted(folder.glob("*.md"))]
-        lines += [f"* [{s.name}]({s.name}/README.md)" for s in sorted(folder.iterdir()) if s.is_dir()]
+        lines = [f"# {folder.name}", "", f"> {GENERATED_NOTE}.", ""]
+        lines += [f"* [{link_text(page_title(p))}]({p.name})" for p in ordered_pages(folder)]
+        lines += [f"* [{s.name}]({s.name}/README.md)" for s in subfolders(folder)]
         readme.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def summary_lines(folder, depth, root):
     indent = "  " * depth
     lines = []
-    for page in sorted(folder.glob("*.md")):
-        if page.name != "README.md":
-            lines.append(f"{indent}* [{link_text(page_title(page))}]({page.relative_to(root).as_posix()})")
-    for sub in sorted(p for p in folder.iterdir() if p.is_dir()):
+    for page in ordered_pages(folder):
+        lines.append(f"{indent}* [{link_text(page_title(page))}]({page.relative_to(root).as_posix()})")
+    for sub in subfolders(folder):
         readme = sub / "README.md"
         lines.append(f"{indent}* [{link_text(page_title(readme))}]({readme.relative_to(root).as_posix()})")
         lines += summary_lines(sub, depth + 1, root)
@@ -157,6 +191,21 @@ def update_summary(summary, entries):
     summary.write_text("\n".join(lines[: start + 1] + [""] + entries + tail) + "\n", encoding="utf-8")
 
 
+def sync_repo(repo, src, dest):
+    if dest.exists() and not is_generated(dest):
+        if src.is_dir():
+            print(f"::warning::{repo} : composants/{repo}/ est écrit à la main, "
+                  "le docs/ du repo n'est pas recopié")
+        return
+    if dest.exists():
+        shutil.rmtree(dest)
+    if not src.is_dir():
+        print(f"{repo} : pas de dossier docs/, ignoré")
+        return
+    copy_docs(repo, src, dest)
+    print(f"{repo} : synchronisé")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--sources", required=True, type=Path, help="dossier contenant un clone par repo")
@@ -169,37 +218,25 @@ def main():
     composants = site / "composants"
     repos = read_repos(root / "composants.txt")
 
-    # Vérifier toutes les sources avant d'effacer quoi que ce soit :
-    # un clone raté ne doit pas faire disparaître la doc déjà publiée.
-    missing = [r for r in repos if not (args.sources / r).is_dir()]
-    if missing:
-        sys.exit(f"Sources absentes dans {args.sources} : {', '.join(missing)}")
-
-    entries = ["* [À propos de cette section](composants/README.md)"]
-    synced = set()
     for repo in repos:
-        dest = composants / repo
-        if dest.exists():
-            shutil.rmtree(dest)
-        src = args.sources / repo / "docs"
-        if not src.is_dir():
-            print(f"{repo} : pas de dossier docs/, ignoré")
-            continue
-        copy_docs(repo, src, dest)
-        if not dest.exists():
-            print(f"{repo} : rien à publier dans docs/, ignoré")
-            continue
-        ensure_readmes(repo, dest)
-        entries.append(f"* [{repo}](composants/{repo}/README.md)")
-        entries += summary_lines(dest, 1, site)
-        synced.add(repo)
-        print(f"{repo} : synchronisé")
+        if (args.sources / repo).is_dir():
+            sync_repo(repo, args.sources / repo / "docs", composants / repo)
+        else:
+            # Clone raté (repo privé sans token…) : on garde la doc déjà publiée.
+            print(f"::warning::{repo} : source absente, doc déjà publiée conservée")
 
-    for stale in composants.iterdir():
-        if stale.is_dir() and stale.name not in synced:
-            shutil.rmtree(stale)
-            print(f"{stale.name} : retiré (plus listé ou plus de docs/)")
+    for folder in subfolders(composants):
+        if is_generated(folder) and folder.name not in repos:
+            shutil.rmtree(folder)
+            print(f"{folder.name} : retiré (plus listé dans composants.txt)")
 
+    listed = [composants / r for r in repos if (composants / r).is_dir()]
+    others = [f for f in subfolders(composants) if f.name not in repos]
+    entries = ["* [À propos de cette section](composants/README.md)"]
+    for folder in listed + others:
+        ensure_readmes(folder)
+        entries.append(f"* [{folder.name}](composants/{folder.name}/README.md)")
+        entries += summary_lines(folder, 1, site)
     update_summary(site / "SUMMARY.md", entries)
 
 

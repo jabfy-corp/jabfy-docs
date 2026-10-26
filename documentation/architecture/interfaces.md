@@ -25,6 +25,7 @@ Champs obligatoires : `bus_version`, `message_id`, `timestamp`, `message_type`, 
 | `health` | État de santé d'un composant |
 | `audit` | Entrée du journal d'audit |
 | `simulation` | Message propre au simulateur |
+| `user_situation` | Consigne de l'utilisateur envoyée par Core, entrée du raisonnement (PR jabfy-bus#6) |
 
 Le schéma détaillé est documenté dans `docs/message-schema.md` de jabfy-bus (visible dans [Composants](../composants/README.md) une fois jabfy-bus agrégé).
 

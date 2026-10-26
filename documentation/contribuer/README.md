@@ -7,10 +7,11 @@ Tout le monde contribue par **pull request sur GitHub**. Le compte GitBook sert 
 | Contenu | Où | Comment |
 |---|---|---|
 | Vision, veille, architecture globale, ADR, protection, performance, suivi | jabfy-docs | PR sur jabfy-docs |
-| Installation, fonctionnement interne, interfaces d'un composant | `docs/` du repo concerné | PR sur ce repo ; la page apparaît dans [Composants](../composants/README.md) après la synchronisation |
+| Installation, fonctionnement interne, interfaces d'un composant | `docs/` du repo concerné (recommandé) | PR sur ce repo ; la page apparaît dans [Composants](../composants/README.md) après la synchronisation |
+| Doc d'un composant dont le repo n'a pas encore de `docs/` | `documentation/composants/<repo>/` dans jabfy-docs | PR sur jabfy-docs |
 | Ce qui doit rester privé | `docs/_interne/` du repo concerné | Jamais recopié sur le site |
 
-> Une page de [Composants](../composants/README.md) se modifie dans son repo d'origine, jamais dans GitBook ni dans jabfy-docs : la synchronisation suivante écraserait la modification.
+> Une page **recopiée** dans [Composants](../composants/README.md) se modifie dans son repo d'origine, jamais dans GitBook ni dans jabfy-docs : la synchronisation suivante écraserait la modification.
 
 ## Ajouter une page à jabfy-docs
 

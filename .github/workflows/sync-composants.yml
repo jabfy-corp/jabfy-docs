@@ -29,9 +29,14 @@ jobs:
         run: |
           mkdir -p _sources
           for repo in $(sed -e 's/#.*//' composants.txt); do
-            git clone --quiet --depth 1 --filter=blob:none --sparse \
-              "https://x-access-token:${TOKEN}@github.com/jabfy-corp/${repo}.git" "_sources/${repo}"
-            git -C "_sources/${repo}" sparse-checkout set docs
+            if git clone --quiet --depth 1 --filter=blob:none --sparse \
+                "https://x-access-token:${TOKEN}@github.com/jabfy-corp/${repo}.git" "_sources/${repo}"; then
+              git -C "_sources/${repo}" sparse-checkout set docs
+            else
+              # Un repo inaccessible ne bloque pas les autres ; sa doc publiée est conservée.
+              rm -rf "_sources/${repo}"
+              echo "::warning::Clone impossible : ${repo} (repo privé sans DOCS_SYNC_TOKEN ?)"
+            fi
           done
 
       - name: Copy into documentation/composants/

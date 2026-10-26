@@ -6,7 +6,7 @@ Source du site de documentation de Jabfy, publié avec GitBook Git Sync.
 |---|---|
 | [`documentation/`](documentation/README.md) | Contenu du site : c'est le seul dossier synchronisé avec GitBook |
 | [`documentation/SUMMARY.md`](documentation/SUMMARY.md) | Sommaire du site |
-| `documentation/composants/` | Généré : copie du `docs/` de chaque repo, à ne pas modifier ici |
+| `documentation/composants/` | Un dossier par repo : recopié depuis son `docs/` (contient `.synchro`, ne pas modifier ici) ou écrit à la main |
 | [`composants.txt`](composants.txt) | Repos dont le `docs/` est recopié sur le site |
 | [`scripts/sync_composants.py`](scripts/sync_composants.py) | Script de recopie, lancé par `.github/workflows/sync-composants.yml` |
 | `gitbook-docs.yaml` | Structure du site GitBook, écrite par GitBook |
