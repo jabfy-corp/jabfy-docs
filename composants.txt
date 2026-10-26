@@ -13,7 +13,11 @@ jabfy-desktop
 jabfy-web
 jabfy-mobile
 
+# jabfy-bus : docs/ trié. Publié depuis la branche bus-docs-composant en attendant
+# sa fusion sur main (après la PR jabfy-bus#6). Sans DOCS_SYNC_TOKEN, la synchro
+# ne peut pas le cloner et garde la version publiée.
+jabfy-bus
+
 # Repos privés : à décommenter une fois leur docs/ trié.
-# jabfy-bus
 # jabfy-simulation
 # jabfy-deploy

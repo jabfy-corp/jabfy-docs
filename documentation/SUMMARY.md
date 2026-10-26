@@ -40,6 +40,15 @@
   * [Interfaces](composants/jabfy-core/interfaces.md)
   * [Installation et lancement](composants/jabfy-core/installation.md)
   * [Fonctionnement interne](composants/jabfy-core/fonctionnement.md)
+* [jabfy-bus](composants/jabfy-bus/README.md)
+  * [Installation et lancement](composants/jabfy-bus/installation.md)
+  * [Architecture — JABFY Universal JSON Bus](composants/jabfy-bus/architecture.md)
+  * [Interfaces](composants/jabfy-bus/interfaces.md)
+  * [Schéma de message — bus v1.0](composants/jabfy-bus/message-schema.md)
+  * [Sécurité — règles d'or du bus](composants/jabfy-bus/security.md)
+  * [Guide des adapters](composants/jabfy-bus/adapters.md)
+  * [Tests](composants/jabfy-bus/tests.md)
+  * [Roadmap technique](composants/jabfy-bus/roadmap.md)
 
 ## Protection
 
