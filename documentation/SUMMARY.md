@@ -36,6 +36,10 @@
 ## Composants
 
 * [À propos de cette section](composants/README.md)
+* [jabfy-core](composants/jabfy-core/README.md)
+  * [Interfaces](composants/jabfy-core/interfaces.md)
+  * [Installation et lancement](composants/jabfy-core/installation.md)
+  * [Fonctionnement interne](composants/jabfy-core/fonctionnement.md)
 
 ## Protection
 
