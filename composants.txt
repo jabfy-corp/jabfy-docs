@@ -13,11 +13,10 @@ jabfy-desktop
 jabfy-web
 jabfy-mobile
 
-# jabfy-bus : docs/ trié. Publié depuis la branche bus-docs-composant en attendant
-# la fusion de la PR jabfy-bus#7. Sans DOCS_SYNC_TOKEN, la synchro ne peut pas
-# cloner ce repo privé et garde la version publiée.
+# Repos privés : lus avec le secret DOCS_SYNC_TOKEN (Contents: read sur chacun).
+# Sans ce secret, ils ne sont pas recopiés et leur doc déjà publiée est conservée.
+# Ce qui doit rester privé va dans docs/_interne/.
 jabfy-bus
-
-# Repos privés : à décommenter une fois leur docs/ trié.
-# jabfy-simulation
-# jabfy-deploy
+jabfy-simulation
+jabfy-deploy
+jabfy-website
