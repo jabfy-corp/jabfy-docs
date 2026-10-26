@@ -19,7 +19,7 @@ Démo : `jabfy-bus demo --steps 10`
 
 ## Phase 1bis — Intégration V0.0.1 ✅
 
-Dans la PR #6, pas encore fusionnée sur `main`.
+Fusionnée sur `main` le 26/10/2026 (PR #6).
 
 - [x] `authorizer` externe (Guard) dans le Verification Engine
 - [x] Audit écrit avant dispatch (`fsync`), refus si chaîne corrompue
@@ -27,7 +27,7 @@ Dans la PR #6, pas encore fusionnée sur `main`.
 - [x] Type de message `user_situation` (consigne utilisateur venant de Core)
 - [x] Origines autorisées pour l'API (CORS, WebSocket)
 - [x] Actions `set_position`, `set_tilt`, `set_mode`
-- [x] Workflow de publication de l'image conteneur (`ghcr.io/jabfy-corp/jabfy-bus`), actif une fois sur `main`
+- [x] Publication de l'image conteneur (`ghcr.io/jabfy-corp/jabfy-bus`) à chaque push sur `main`
 
 ## Phase 2 — Domotique sérieuse
 

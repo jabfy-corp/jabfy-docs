@@ -14,6 +14,8 @@ python3 -m unittest discover -s tests -v
 
 ## Ce qui est couvert
 
+Le détail des fichiers de code importés par chaque test est dans la [documentation du code](code/tests.md).
+
 | Fichier | Tests | Ce qui est vérifié |
 |---|---|---|
 | `test_message.py` | 12 | Validation du message v1.0 (type, adapter, action, confiance, `trust_level`), aller-retour JSON, conservation de la valeur brute, `user_situation` |

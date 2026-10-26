@@ -2,7 +2,7 @@
 
 > ⚠️ Page recopiée automatiquement depuis [jabfy-bus/docs/README.md](https://github.com/jabfy-corp/jabfy-bus/blob/main/docs/README.md). Toute modification faite ici sera écrasée : modifiez le repo d'origine.
 
-Le bus JSON universel de Jabfy. Il traduit chaque protocole domotique (MQTT, Zigbee2MQTT, HTTP, Modbus TCP, CoAP) vers un message JSON commun, fait vérifier toute commande avant de l'exécuter, et trace chaque décision dans un journal d'audit dont toute altération se détecte.
+Le bus JSON universel de Jabfy. Il traduit chaque protocole domotique (MQTT, Zigbee2MQTT, HTTP, Modbus TCP, CoAP) vers un message JSON commun, fait vérifier toute commande avant de l'exécuter, et trace chaque décision dans un journal d'audit append-only, chaîné en SHA-256 : toute altération se détecte.
 
 ## Rôle dans l'architecture
 
@@ -24,11 +24,13 @@ flowchart LR
   exec -->|commande traduite| devices
 ```
 
+jabfy-bus est une bibliothèque Python : les composants qui l'utilisent l'embarquent dans leur processus.
+
 | Composant | Relation avec le bus |
 |---|---|
-| jabfy-core | Les actions qu'il propose entrent sur le bus en `command.requested`, la consigne de l'utilisateur en `user_situation`. Il ne publie jamais directement vers un appareil. |
+| jabfy-core | Les actions qu'il propose entrent sur le bus en `command.requested`, la consigne de l'utilisateur en `user_situation`. Il ne publie jamais directement vers un appareil. Avec la PR core#13 (en cours), Core embarque aussi le bus, la vérification, l'exécution et les WebSockets dans son processus. |
 | jabfy-guard | Décide d'autoriser ou non une commande. Il est branché comme `authorizer` du Verification Engine. |
-| jabfy-simulation | Embarque le bus dans la V0.0.1 et lui fournit Guard, l'audit et le transport MQTT vers la maison virtuelle. |
+| jabfy-simulation | Embarque le bus avec Guard pour la maison virtuelle de la V0.0.1, et lui fournit l'audit et le transport MQTT. |
 | jabfy-deploy | Lance la pile V0.0.1. Le bus n'y est pas un service séparé. |
 | Appareils | Parlent leur protocole natif ; seuls les adapters le connaissent. |
 
@@ -44,6 +46,7 @@ flowchart LR
 | [Adapters](adapters.md) | Adapters existants et à venir |
 | [Tests](tests.md) | Lancer les tests, ce qu'ils couvrent, CI |
 | [Roadmap](roadmap.md) | Phases réalisées et à venir |
+| [Documentation du code](code/README.md) | Carte des fichiers source, une page par fichier, et lien entre tests et code |
 
 ## Deux façons de l'utiliser
 
@@ -54,12 +57,13 @@ flowchart LR
 
 Au 26/10/2026 :
 
-- **`main`** contient la phase 1 (version 0.1.0) : pipeline complet, adapters P0, vérification, exécution, audit, simulation, API de consultation, CLI.
-- **La V0.0.1** est dans la PR #6, avec une CI verte, mais n'est pas encore fusionnée : `authorizer` Guard, admission à usage unique, audit écrit avant l'envoi, type `user_situation`, origines autorisées, image conteneur.
+- **La V0.0.1 est sur `main`** depuis la fusion de la PR #6 le 26/10 : `authorizer` Guard, admission à usage unique, audit écrit avant l'envoi, type `user_situation`, origines autorisées, actions de position et de mode.
+- L'image conteneur est publiée sur `ghcr.io/jabfy-corp/jabfy-bus` à chaque push sur `main`.
 - 96 tests unitaires, sans réseau ni matériel.
 
 ## Limites connues et TODO
 
+- [ ] Le workflow `publish-image.yml` échoue après avoir publié l'image : l'étape d'attestation n'est pas disponible sur le plan GitHub gratuit de l'organisation. Le digest n'est donc pas reporté et jabfy-deploy n'est pas prévenu.
 - [ ] `jabfy-bus serve` lit la configuration, mais ne démarre ni les adapters ni les policies qu'elle contient, et n'enregistre aucun transport. L'API servie reste vide tant que rien ne publie sur le bus.
 - [ ] La CI n'installe pas FastAPI : les 5 tests d'API (CORS, origines WebSocket) y sont sautés.
 - [ ] `jabfy-bus validate` sur un fichier introuvable affiche une trace Python au lieu d'un message d'erreur.
