@@ -2,6 +2,10 @@
 
 Source du site de documentation de Jabfy, publié avec GitBook Git Sync.
 
+**📖 Lire la doc : https://jabfy-corp.gitbook.io/jabfy-corp-docs/HyvaLxyexEdtkolJz8ZR/**
+
+> Lien de partage privé : toute personne qui l'a peut lire le site. Ne le copiez pas dans un repo public ni en dehors de l'équipe.
+
 | Chemin | Rôle |
 |---|---|
 | [`documentation/`](documentation/README.md) | Contenu du site : c'est le seul dossier synchronisé avec GitBook |
