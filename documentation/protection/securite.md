@@ -1,6 +1,6 @@
 # Sécurité des repos
 
-## État constaté au 24/10/2026
+## État constaté au 27/10/2026
 
 - L'organisation `jabfy-corp` est sur le plan **GitHub Free**.
 - La double authentification n'est **pas** obligatoire pour les membres.

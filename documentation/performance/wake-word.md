@@ -1,8 +1,8 @@
 # Faux déclenchements du wake word
 
-| Responsable | Valeur de départ | Cible | Dernière mesure |
+| Suivi par | Valeur de départ | Cible | Dernière mesure |
 |---|---|---|---|
-| | | | |
+| Simeon | Bloqué : pas encore de wake word | Proposée : < 1 faux déclenchement par jour, > 95 % de détection | — |
 
 ## Définition
 

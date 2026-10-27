@@ -16,10 +16,10 @@ D'après l'historique Git : à confirmer par chacun.
 
 | Repo | Responsable | Relecteur |
 |---|---|---|
-| jabfy-core | Joan | |
-| jabfy-bus | Elias | |
-| jabfy-guard | Loan | |
-| jabfy-simulation | Loan | |
+| jabfy-core | Loan | Siméon |
+| jabfy-bus | Elias | Joan |
+| jabfy-guard | Loan | Joan |
+| jabfy-simulation | Loan | Siméon |
 | jabfy-deploy | Loan | |
 | jabfy-voice | Elias | |
 | jabfy-tts | Eloi | |
@@ -28,6 +28,20 @@ D'après l'historique Git : à confirmer par chacun.
 | jabfy-mobile | Eloi | |
 | jabfy-website | Loan | |
 | jabfy-docs | Elias | |
+
+## Documentation des composants
+
+État au 27/10/2026, d'après l'historique Git.
+
+| Composant | Rédigée par | Date | Sur le site |
+|---|---|---|---|
+| jabfy-bus | Elias, carte du code par Joan | 26/10 | ✅ |
+| jabfy-core | Simeon | 27/10 | ✅ |
+| jabfy-simulation | Simeon | 27/10 | ✅ |
+| jabfy-deploy | Loan | 27/10 | ✅ |
+| jabfy-tts | Eloi | 27/10 | ✅ |
+| jabfy-voice | Elias | 27/10 | En attente de fusion (PR) |
+| jabfy-guard, desktop, web, mobile, website, prototype, template | — | — | Pas encore de code à documenter sur `main` |
 
 ## Répartition des pages
 

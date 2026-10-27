@@ -1,0 +1,5 @@
+# 2026-10-27 — jabfy-bus main c99d086, Python 3.12.3, i7-13700HX, SSD NVMe
+telemetry: build+publish 105,416 msg/s | publish only 562,957 msg/s
+command (audit in memory): median 98 us | p95 123 us | 10,247 cmd/s
+command (audit on disk + fsync): median 646 us | p95 890 us | 1,547 cmd/s
+dedup: 100,000 ids kept after 100,000 messages, 12.4 MB still allocated (~124 bytes per message, history capped at 500)

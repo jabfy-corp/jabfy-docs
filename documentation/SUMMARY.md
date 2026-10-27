@@ -10,7 +10,7 @@
 
 ## Veille
 
-* [Méthode de veille](veille/README.md)
+* [Synthèse et méthode](veille/README.md)
   * [Modèle de fiche](veille/modele.md)
 * [Wake word](veille/wake-word.md)
 * [Reconnaissance vocale (STT)](veille/stt.md)
@@ -21,7 +21,7 @@
 
 ## Architecture
 
-* [Vue d'ensemble](architecture/README.md)
+* [En bref](architecture/README.md)
 * [Vue globale (C4)](architecture/vue-globale.md)
 * [Flux d'une demande](architecture/flux.md)
 * [Interfaces](architecture/interfaces.md)
@@ -32,6 +32,12 @@
   * [0002 — FastAPI pour les API Python](architecture/adr/0002-fastapi.md)
   * [0003 — Modèle local via une API compatible OpenAI](architecture/adr/0003-modele-local.md)
   * [0004 — Electron et React pour le client desktop](architecture/adr/0004-electron-react.md)
+  * [0005 — MQTT et Zigbee2MQTT comme protocoles prioritaires](architecture/adr/0005-mqtt-zigbee2mqtt.md)
+  * [0006 — Bus et Guard embarqués dans la V0.0.1](architecture/adr/0006-bus-et-guard-embarques.md)
+  * [0007 — L'IA propose, une vérification déterministe décide](architecture/adr/0007-ia-propose-guard-decide.md)
+  * [0008 — faster-whisper pour la reconnaissance vocale](architecture/adr/0008-faster-whisper.md)
+  * [0009 — Kokoro-82M pour la synthèse vocale](architecture/adr/0009-kokoro-tts.md)
+  * [0010 — Un site de documentation unique](architecture/adr/0010-documentation-agregee.md)
 
 ## Composants
 
@@ -152,7 +158,7 @@
 
 ## Protection
 
-* [Vue d'ensemble](protection/README.md)
+* [Tableau de bord](protection/README.md)
 * [Licences](protection/licences.md)
 * [Marque et antériorité](protection/marque-et-anteriorite.md)
 * [Propriété intellectuelle](protection/propriete-intellectuelle.md)
@@ -161,7 +167,7 @@
 
 ## Performance
 
-* [Méthode de mesure](performance/README.md)
+* [Tableau de bord et méthode](performance/README.md)
   * [Modèle de fiche](performance/modele.md)
 * [Latence de bout en bout](performance/latence.md)
 * [Taux d'erreur du STT (WER)](performance/stt-wer.md)
@@ -180,4 +186,5 @@
 
 * [Suivi du projet](suivi/README.md)
   * [Modèle de RDV](suivi/modele-rdv.md)
+* [RDV du 29/10/2026](suivi/2026-10-29.md)
 * [RDV du 16/10/2026](suivi/2026-10-16.md)

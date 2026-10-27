@@ -1,0 +1,12 @@
+# 2026-10-27 — prompt et parseur de jabfy-core main a3b9aa7, Ollama 0.17.7, Q4_K_M, i7-13700HX + RTX 5060 Laptop 8 Go
+llama3.2 | prompt only: median 0.33 s | max 4.68 s | 105 tok/s | JSON valid 10/10 | correct 8/10 (of which 0 with extra changes)
+llama3.2 | schema: median 0.49 s | max 0.78 s | 138 tok/s | JSON valid 10/10 | correct 8/10 (of which 0 with extra changes)
+ministral-3 | prompt only: median 1.08 s | max 1.51 s | 41 tok/s | JSON valid 10/10 | correct 10/10 (of which 1 with extra changes)
+ministral-3 | schema: median 0.95 s | max 1.35 s | 42 tok/s | JSON valid 10/10 | correct 10/10 (of which 0 with extra changes)
+llama3.2 (CPU) | prompt only: median 1.13 s | max 2.15 s | 28 tok/s | JSON valid 10/10 | correct 8/10 (of which 0 with extra changes)
+== ministral-3 (CPU seul)
+ministral-3 (CPU) | prompt only: median 3.55 s | max 4.45 s | 12 tok/s | JSON valid 10/10 | correct 10/10 (of which 0 with extra changes)
+
+# Détail des échecs de llama3.2 (GPU, prompt seul)
+  RATÉ: 'Je pars de la maison.' attendu={'house_lock': True, 'alarm': True} obtenu={'house_lock': True, 'hallway_light': True, 'kitchen_light': True}
+  RATÉ: 'Quelle heure est-il ?' attendu={} obtenu={'kitchen_light': False}

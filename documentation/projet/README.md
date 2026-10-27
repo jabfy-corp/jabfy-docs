@@ -26,12 +26,12 @@ Sont exclus pour l'instant : e-mails, calendriers, messageries et intégrations 
 
 ## Objectifs EIP retenus
 
-| Objectif | Intitulé | Section |
-|---|---|---|
-| Obligatoire 1 | Track what's out there and use it to crack your project's hard problem | [Veille](../veille/README.md) |
-| Obligatoire 2 | Structure, document and make your technical architecture reliable | [Architecture](../architecture/README.md) |
-| Complémentaire A | Protect and make the most of your technology | [Protection](../protection/README.md) |
-| Complémentaire D | Measure, test and optimize technical performance | [Performance](../performance/README.md) |
+| Objectif | Intitulé | Section | Où en est-on (27/10/2026) |
+|---|---|---|---|
+| Obligatoire 1 | Track what's out there and use it to crack your project's hard problem | [Veille](../veille/README.md) | 6 fiches rédigées et sourcées ; choix confirmés pour STT, TTS et protocoles, mesurés pour le LLM |
+| Obligatoire 2 | Structure, document and make your technical architecture reliable | [Architecture](../architecture/README.md) | Modèle C4, flux, contrats, CI/CD, 10 ADR ; convergence de la V0.0.1 sur `main` en cours |
+| Complémentaire A | Protect and make the most of your technology | [Protection](../protection/README.md) | État des lieux fait (licences, sécurité, RGPD) ; démarches EPITECH et INPI à lancer |
+| Complémentaire D | Measure, test and optimize technical performance | [Performance](../performance/README.md) | Premières mesures réelles (bus, modèle) et scripts reproductibles ; STT et wake word à mesurer |
 
 ## Après l'EIP
 

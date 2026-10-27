@@ -1,8 +1,8 @@
 # Taux d'erreur du STT (WER)
 
-| Responsable | Valeur de départ | Cible | Dernière mesure |
+| Suivi par | Valeur de départ | Cible | Dernière mesure |
 |---|---|---|---|
-| | | | |
+| Elias | À mesurer (faster-whisper `base`) | Proposée : WER < 10 % sur les commandes | — |
 
 ## Définition
 

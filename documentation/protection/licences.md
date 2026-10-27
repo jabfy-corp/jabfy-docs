@@ -2,7 +2,7 @@
 
 ## Licences des repos
 
-État au 24/10/2026.
+État au 27/10/2026.
 
 | Repo | Visibilité | Licence déclarée |
 |---|---|---|
@@ -10,7 +10,7 @@
 | jabfy-simulation | Privé | Propriétaire (`pyproject.toml`) |
 | jabfy-deploy | Privé | Aucune |
 | jabfy-website | Privé | Aucune |
-| jabfy-tts | Public | MIT dans `package.json`, sans fichier `LICENSE` |
+| jabfy-tts | Public | MIT dans `Cargo.toml`, sans fichier `LICENSE` |
 | jabfy-core | Public | Aucune |
 | jabfy-guard | Public | Aucune |
 | jabfy-voice | Public | Aucune |

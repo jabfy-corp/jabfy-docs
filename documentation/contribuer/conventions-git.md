@@ -48,7 +48,13 @@ Exemple : `docs: add wake word benchmark page`.
 
 ## Pull requests
 
-Mettre `Closes #<numéro>` dans la description : une PR sans issue liée échoue à la validation.
+- Mettre `Closes #<numéro>` dans la description : une PR sans issue liée échoue à la validation. Le lien ne fonctionne que pour une PR qui vise la branche par défaut (`main`).
+- Faire relire la PR par un autre membre avant de la fusionner : le relecteur de chaque repo est indiqué dans [Équipe](../projet/equipe.md).
+- Ne pas renommer une branche qui a une PR ouverte : GitHub ferme la PR.
+
+## Commits automatiques
+
+Deux robots écrivent directement sur `main` de jabfy-docs, sans issue : la synchronisation des composants (« docs: sync composants ») et GitBook (« GitBook: … »). C'est normal.
 
 ## Releases
 
