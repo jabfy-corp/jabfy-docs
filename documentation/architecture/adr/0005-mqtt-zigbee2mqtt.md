@@ -1,8 +1,8 @@
-# ADR-0005 — MQTT et Zigbee2MQTT comme protocoles prioritaires
+# 0005 — MQTT et Zigbee2MQTT comme protocoles prioritaires
 
-| Statut | Date | Auteurs | Veille liée |
-|---|---|---|---|
-| Accepté (consigné a posteriori) | 27/10/2026 | Elias | [Protocoles domotiques](../../veille/protocoles-domotiques.md) |
+| Statut                          | Date       | Auteurs | Veille liée                                                           |
+| ------------------------------- | ---------- | ------- | --------------------------------------------------------------------- |
+| Accepté (consigné a posteriori) | 27/10/2026 | Elias   | [Protocoles domotiques](../../veille/etudes/protocoles-domotiques.md) |
 
 ## Contexte
 
@@ -20,6 +20,6 @@ Priorité **P0** à **MQTT, Zigbee via Zigbee2MQTT et HTTP**. **Matter en P1**, 
 
 ## Conséquences
 
-- Le simulateur parle le même format que Zigbee2MQTT (`zigbee2mqtt/<id>` et `zigbee2mqtt/<id>/set`) : les adapters sont testés comme sur du vrai matériel.
-- Le bus dépend de Zigbee2MQTT pour le Zigbee : une clé USB coordinateur et ce service sont nécessaires sur une vraie installation.
-- MQTT n'ayant aucune sécurité par défaut, TLS et ACL sont obligatoires en production, et les messages conservés (« retained ») sont surveillés, car une vieille commande pourrait être rejouée.
+* Le simulateur parle le même format que Zigbee2MQTT (`zigbee2mqtt/<id>` et `zigbee2mqtt/<id>/set`) : les adapters sont testés comme sur du vrai matériel.
+* Le bus dépend de Zigbee2MQTT pour le Zigbee : une clé USB coordinateur et ce service sont nécessaires sur une vraie installation.
+* MQTT n'ayant aucune sécurité par défaut, TLS et ACL sont obligatoires en production, et les messages conservés (« retained ») sont surveillés, car une vieille commande pourrait être rejouée.

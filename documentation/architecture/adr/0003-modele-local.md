@@ -1,8 +1,8 @@
-# ADR-0003 — Modèle local via une API compatible OpenAI
+# 0003 — Modèle local via une API compatible OpenAI
 
-| Statut | Date | Auteurs | Veille liée |
-|---|---|---|---|
-| Accepté (consigné a posteriori) | 27/10/2026 | Équipe | [LLM local](../../veille/llm-local.md) |
+| Statut                          | Date       | Auteurs | Veille liée                                   |
+| ------------------------------- | ---------- | ------- | --------------------------------------------- |
+| Accepté (consigné a posteriori) | 27/10/2026 | Équipe  | [LLM local](../../veille/etudes/llm-local.md) |
 
 ## Contexte
 
@@ -20,6 +20,6 @@ Option 2 : jabfy-core passe par l'interface `LLMClient` et un client unique comp
 
 ## Conséquences
 
-- Moteur et modèle se choisissent par configuration, sans toucher au code de Core : c'est ce qui a permis de comparer Llama 3.2 et Ministral 3 avec le même code ([Intentions](../../performance/intentions.md)).
-- Les fonctions propres à un moteur, hors de l'API commune, ne sont pas accessibles. Les sorties structurées par schéma JSON, recommandées par la veille, passent par le champ `response_format` de l'API compatible.
-- jabfy-voice appelle encore Ollama directement : à aligner quand la voix sera branchée sur Core.
+* Moteur et modèle se choisissent par configuration, sans toucher au code de Core : c'est ce qui a permis de comparer Llama 3.2 et Ministral 3 avec le même code ([Intentions](../../performance/intentions.md)).
+* Les fonctions propres à un moteur, hors de l'API commune, ne sont pas accessibles. Les sorties structurées par schéma JSON, recommandées par la veille, passent par le champ `response_format` de l'API compatible.
+* jabfy-voice appelle encore Ollama directement : à aligner quand la voix sera branchée sur Core.

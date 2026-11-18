@@ -1,8 +1,8 @@
-# ADR-0009 — Kokoro-82M pour la synthèse vocale
+# 0009 — Kokoro-82M pour la synthèse vocale
 
-| Statut | Date | Auteurs | Veille liée |
-|---|---|---|---|
-| Accepté (intégration avec jabfy-voice à décider) | 27/10/2026 | Eloi | [TTS](../../veille/tts.md) |
+| Statut                                           | Date       | Auteurs | Veille liée                       |
+| ------------------------------------------------ | ---------- | ------- | --------------------------------- |
+| Accepté (intégration avec jabfy-voice à décider) | 27/10/2026 | Eloi    | [TTS](../../veille/etudes/tts.md) |
 
 ## Contexte
 
@@ -21,6 +21,6 @@ La réponse doit être lue à voix haute en français, sur la machine, avec une 
 
 ## Conséquences
 
-- Une seule voix française, de qualité moyenne : à surveiller, et à créditer (données SIWIS sous CC BY).
-- jabfy-tts est en Rust et jabfy-voice en Python : il reste à choisir comment les relier, par la bibliothèque Python de Kokoro ou par jabfy-tts en service. Décision à consigner dans un prochain ADR.
-- Les poids du modèle se téléchargent à part : ils ne sont pas embarqués dans la bibliothèque.
+* Une seule voix française, de qualité moyenne : à surveiller, et à créditer (données SIWIS sous CC BY).
+* jabfy-tts est en Rust et jabfy-voice en Python : il reste à choisir comment les relier, par la bibliothèque Python de Kokoro ou par jabfy-tts en service. Décision à consigner dans un prochain ADR.
+* Les poids du modèle se téléchargent à part : ils ne sont pas embarqués dans la bibliothèque.

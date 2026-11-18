@@ -2,9 +2,9 @@
 
 > Copier ce fichier sous `NNNN-titre-court.md`. Viser une page : un ADR trop long ne sera pas relu.
 
-| Statut | Date | Auteurs | Veille liée |
-|---|---|---|---|
-| Proposé | AAAA-MM-JJ | | [fiche](../../veille/README.md) |
+| Statut  | Date       | Auteurs | Veille liée                   |
+| ------- | ---------- | ------- | ----------------------------- |
+| Proposé | AAAA-MM-JJ |         | [fiche](../../veille/veille/) |
 
 ## Contexte
 

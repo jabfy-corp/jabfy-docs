@@ -1,6 +1,6 @@
 # Écrire la doc d'un repo
 
-Chaque repo a un `README.md` et un dossier `docs/`. Le `docs/` est recopié automatiquement dans [Composants](../composants/README.md) chaque nuit, dès qu'il est sur `main`.
+Chaque repo a un `README.md` et un dossier `docs/`. Le `docs/` est recopié automatiquement dans [Composants](../composants/composants.md) chaque nuit, dès qu'il est sur `main`.
 
 ## Structure
 
@@ -18,20 +18,20 @@ docs/
 └── _interne/         # jamais publié : failles, notes privées
 ```
 
-Exemples complets : jabfy-bus, jabfy-core, jabfy-simulation, jabfy-deploy et jabfy-tts, dans [Composants](../composants/README.md).
+Exemples complets : jabfy-bus, jabfy-core, jabfy-simulation, jabfy-deploy et jabfy-tts, dans [Composants](../composants/composants.md).
 
 Tout fichier ou dossier dont le nom commence par `_` ou `.` reste dans le repo et n'est pas publié.
 
 ## Règles
 
-- **Une page = un sujet.** Mieux vaut trois pages courtes qu'une longue.
-- **Le premier titre `#` est le titre de la page** : il apparaît dans le sommaire du site.
-- **L'ordre des pages dans le menu** suit l'ordre dans lequel `docs/README.md` les cite.
-- **Liens relatifs** entre pages de `docs/` (`[Installation](installation.md)`). Les liens qui sortent de `docs/` (`../schemas/…`) sont réécrits vers GitHub par la synchronisation.
-- **Images** à côté des pages, dans `docs/`, avec un lien relatif. **Diagrammes en Mermaid.**
-- **Exemples exécutables** : une commande ou un extrait de code montré dans la doc doit fonctionner tel quel.
-- **État honnête** : la section « Limites connues et TODO » dit ce qui ne marche pas encore. C'est ce qui rend la doc crédible.
-- **À jour avec le code** : une PR qui change un comportement documenté met la doc à jour dans la même PR.
+* **Une page = un sujet.** Mieux vaut trois pages courtes qu'une longue.
+* **Le premier titre `#` est le titre de la page** : il apparaît dans le sommaire du site.
+* **L'ordre des pages dans le menu** suit l'ordre dans lequel `docs/README.md` les cite.
+* **Liens relatifs** entre pages de `docs/` (`[Installation](installation.md)`). Les liens qui sortent de `docs/` (`../schemas/…`) sont réécrits vers GitHub par la synchronisation.
+* **Images** à côté des pages, dans `docs/`, avec un lien relatif. **Diagrammes en Mermaid.**
+* **Exemples exécutables** : une commande ou un extrait de code montré dans la doc doit fonctionner tel quel.
+* **État honnête** : la section « Limites connues et TODO » dit ce qui ne marche pas encore. C'est ce qui rend la doc crédible.
+* **À jour avec le code** : une PR qui change un comportement documenté met la doc à jour dans la même PR.
 
 ## Ajouter un repo au site
 

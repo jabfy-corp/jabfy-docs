@@ -1,8 +1,8 @@
-# ADR-0007 — L'IA propose, une vérification déterministe décide
+# 0007 — L'IA propose, une vérification déterministe décide
 
-| Statut | Date | Auteurs | Veille liée |
-|---|---|---|---|
-| Accepté (principe fondateur, consigné a posteriori) | 27/10/2026 | Équipe | [LLM local](../../veille/llm-local.md) |
+| Statut                                              | Date       | Auteurs | Veille liée                                   |
+| --------------------------------------------------- | ---------- | ------- | --------------------------------------------- |
+| Accepté (principe fondateur, consigné a posteriori) | 27/10/2026 | Équipe  | [LLM local](../../veille/etudes/llm-local.md) |
 
 ## Contexte
 
@@ -20,6 +20,6 @@ Option 3. Le modèle ne produit qu'une **proposition JSON**. Toute commande pass
 
 ## Conséquences
 
-- Une erreur ou une manipulation du modèle ne peut pas, à elle seule, déclencher une action dangereuse.
-- La sécurité repose sur la qualité des règles de Guard : le vérificateur actuel de jabfy-core, qui ne contrôle que les noms d'appareils, ne suffit pas, et doit déléguer à Guard.
-- Chaque action est traçable : qui l'a demandée, quelle règle l'a autorisée, ce qui a été exécuté.
+* Une erreur ou une manipulation du modèle ne peut pas, à elle seule, déclencher une action dangereuse.
+* La sécurité repose sur la qualité des règles de Guard : le vérificateur actuel de jabfy-core, qui ne contrôle que les noms d'appareils, ne suffit pas, et doit déléguer à Guard.
+* Chaque action est traçable : qui l'a demandée, quelle règle l'a autorisée, ce qui a été exécuté.
