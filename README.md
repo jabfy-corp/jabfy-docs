@@ -2,9 +2,9 @@
 
 Source du site de documentation de Jabfy, publié avec GitBook Git Sync.
 
-**📖 Lire la doc : https://jabfy-corp.gitbook.io/jabfy-corp-docs/HyvaLxyexEdtkolJz8ZR/**
+**📖 Lire la doc : https://jabfy-corp.gitbook.io/jabfy-corp-docs/**
 
-> Lien de partage privé : toute personne qui l'a peut lire le site. Ne le copiez pas dans un repo public ni en dehors de l'équipe.
+> Site public depuis le 18/11/2026 (offre GitBook gratuite) : tout ce qui est fusionné sur `main` est visible par tout le monde et indexé par les moteurs de recherche. N'y mettez ni secret, ni donnée personnelle.
 
 | Chemin | Rôle |
 |---|---|
