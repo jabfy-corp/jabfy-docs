@@ -12,12 +12,22 @@
 
 * [Synthèse et méthode](veille/README.md)
   * [Modèle de fiche](veille/modele.md)
-* [Wake word](veille/wake-word.md)
-* [Reconnaissance vocale (STT)](veille/stt.md)
-* [LLM local](veille/llm-local.md)
-* [Synthèse vocale (TTS)](veille/tts.md)
-* [Protocoles domotiques](veille/protocoles-domotiques.md)
-* [Vie privée](veille/vie-privee.md)
+* [jabfy-core](veille/projets/core.md)
+* [jabfy-bus](veille/projets/bus.md)
+* [jabfy-guard](veille/projets/guard.md)
+* [jabfy-simulation](veille/projets/simulation.md)
+* [jabfy-voice](veille/projets/voice.md)
+* [jabfy-tts](veille/projets/tts.md)
+* [jabfy-deploy](veille/projets/deploy.md)
+* [jabfy-desktop](veille/projets/desktop.md)
+* [jabfy-website](veille/projets/website.md)
+* [Études par domaine](veille/etudes.md)
+  * [Wake word](veille/wake-word.md)
+  * [Reconnaissance vocale (STT)](veille/stt.md)
+  * [LLM local](veille/llm-local.md)
+  * [Synthèse vocale (TTS)](veille/tts.md)
+  * [Protocoles domotiques](veille/protocoles-domotiques.md)
+  * [Vie privée](veille/vie-privee.md)
 
 ## Architecture
 

@@ -1,40 +1,30 @@
-# Modèle de fiche de veille
+# Modèle de fiche projet
 
-> Copier ce fichier sous `veille/<domaine>.md`, l'ajouter dans `SUMMARY.md` et dans le tableau de [la méthode](README.md).
+> Copier ce fichier sous `veille/projets/<projet>.md`, l'ajouter dans `SUMMARY.md` et dans le tableau de la [synthèse](README.md). Une fiche tient sur un écran : le détail d'une comparaison va dans une étude par domaine.
 
-| Statut | Responsable | Dernière mise à jour |
+# jabfy-xxx : ce que fait le projet, en une phrase
+
+| Responsables | Code | Mise à jour |
 |---|---|---|
-| À faire / En cours / Décidé | | AAAA-MM-JJ |
+| | Langage ; branche où se trouve le code | JJ/MM/AAAA |
 
-## Le problème
+## Le problème constaté
 
-Ce que Jabfy doit faire, sous quelles contraintes (machine cible, langue, temps de réponse attendu), et pourquoi c'est difficile.
+Ce qu'on a observé, avec la preuve : une mesure, un incident, une contrainte du projet (100 % local, machine sans GPU, français).
 
-## Les solutions existantes
+- …
 
-Pour chaque solution : une phrase de description, le lien vers le projet, la version testée.
+## Les technologies et pourquoi
 
-- **Solution A** — …
-- **Solution B** — …
+| Besoin | Choix | Pourquoi | Écarté |
+|---|---|---|---|
+| | | | Solution : raison en une ligne |
 
-## Comparatif
+## Ce que la veille change
 
-| Solution | 100 % local | Latence | Qualité en français | RAM | Licence (code / modèle) |
-|---|---|---|---|---|---|
-| Solution A | | | | | |
-| Solution B | | | | | |
+Ce qu'on a appris et qui modifie le code ou le plan : défaut trouvé, alternative à réévaluer, risque de maintenance, décision à prendre.
 
-Machine et protocole de mesure : …
-
-## Choix retenu
-
-Solution retenue et raison principale. Pour chaque solution écartée, une ligne qui dit pourquoi.
-
-Décision consignée dans : [ADR-XXXX](../architecture/adr/README.md).
-
-## Avancées récentes
-
-Ce qui bouge dans le domaine et pourrait servir plus tard, avec la date et le lien.
+- …
 
 ## Sources
 
