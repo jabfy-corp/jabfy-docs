@@ -186,5 +186,6 @@
 
 * [Suivi du projet](suivi/README.md)
   * [Modèle de RDV](suivi/modele-rdv.md)
+* [RDV du 19/11/2026](suivi/2026-11-19.md)
 * [RDV du 29/10/2026](suivi/2026-10-29.md)
 * [RDV du 16/10/2026](suivi/2026-10-16.md)

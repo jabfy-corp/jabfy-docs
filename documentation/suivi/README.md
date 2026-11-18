@@ -13,7 +13,8 @@ Un fichier par RDV, nommé `AAAA-MM-JJ.md`, créé à partir du [modèle](modele
 
 | Date | Compte-rendu | Points clés |
 |---|---|---|
-| 29/10/2026 | [RDV de suivi](2026-10-29.md) (préparé) | Doc, veille, architecture et premières mesures livrées ; emplacement du bus et API de Core à trancher |
+| 19/11/2026 | [RDV de suivi](2026-11-19.md) (préparé) | Roadmap à 3 mois et direction orchestrateur ; emplacement du bus, rôles et format de la veille à trancher |
+| 29/10/2026 | [RDV de suivi](2026-10-29.md) | Retours du mentor : Guard prioritaire, release et fuite de mémoire du bus, tests de déploiement, doc plus concise |
 | 16/10/2026 | [RDV de suivi](2026-10-16.md) | Choix des objectifs 1, 2, A et D ; grandes étapes et suivi à préparer |
 
 ## Avant chaque RDV
