@@ -190,6 +190,7 @@
     * [`sim/home/store.py`](composants/jabfy-simulation/code/home-store.md)
     * [`sim/integration/modbus_client.py`](composants/jabfy-simulation/code/integration-modbus-client.md)
 * [jabfy-deploy](composants/jabfy-deploy/README.md)
+  * [Deploy V1 — exploitation locale et tests](composants/jabfy-deploy/deploy-v1.md)
   * [Installation et lancement](composants/jabfy-deploy/installation.md)
   * [Fonctionnement interne](composants/jabfy-deploy/fonctionnement.md)
   * [Interfaces et configuration](composants/jabfy-deploy/interfaces.md)
